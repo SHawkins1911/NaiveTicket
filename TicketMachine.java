@@ -9,15 +9,24 @@
  * @author David J. Barnes and Michael Kolling
  * @version 2008.03.30
  */
-public class TicketMachine
+ class TicketMachine
 {
     // The price of a ticket from this machine.
-    private int price;
+    private Integer price;
     // The amount of money entered by a customer so far.
-    private int balance;
+    private Integer balance;
     // The total amount of money collected by this machine.
-    private int total;
+    private Integer total;
 
+    /**
+     * Create a machine that issues tickets of the given price.
+     * Note that the price must be greater than zero, and there
+     * are no checks to ensure this.
+     */
+    public TicketMachine()
+    {
+        this(1000);
+    }
     /**
      * Create a machine that issues tickets of the given price.
      * Note that the price must be greater than zero, and there
@@ -26,8 +35,18 @@ public class TicketMachine
     public TicketMachine(int ticketCost)
     {
         price = ticketCost;
-        balance = 0;
         total = 0;
+        balance = 0;
+    }
+   
+   
+    /**
+     * Empty machine
+     * */
+    public void empty()
+    {
+        total = (balance - balance);
+        balance = total;
     }
 
     /**
@@ -72,7 +91,60 @@ public class TicketMachine
 
         // Update the total collected with the balance.
         total = total + balance;
+        
+        //Update balance
+        balance = balance - price;
         // Clear the balance.
-        balance = 0;
+        //balance = 0;
+    }
+    /**
+     * Get total
+     * 
+ 
+     */
+    public void getTotal()
+    {
+        System.out.print(total);
+    
+    
+    
+    }
+    /**
+     * Prompt the customer to insert the correct amount of money
+     * */
+     public void prompt()
+     {
+        System.out.println("Please insert the correct amount of money.");
+        }
+    /*public void prompt()
+    {
+        int diff = (price - balance);
+            
+      
+                if (balance < price && diff < 0){
+            
+                    System.out.println("Please insert " + diff + "!");
+                }
+                else { 
+                    System.out.println("Thank you. Enjoy your trip!");}
+       
+        
+        } */
+        
+    /**
+     * Tell customer the ticket price
+     * */
+    public void showPrice()
+    {
+        System.out.println(price + " cents");}
+    
+    /**
+     * Tell customer the ticket price
+     * */
+    public void setPrice(int ticketCost)
+    {
+       price = ticketCost; 
+    
     }
 }
+    
